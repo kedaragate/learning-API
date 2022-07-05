@@ -1,4 +1,5 @@
 const usersDiv = document.querySelector(".cards");
+let userData;
 
 fetch("https://dummyapi.io/data/v1/user", {
   method: "GET",
@@ -8,4 +9,44 @@ fetch("https://dummyapi.io/data/v1/user", {
   },
 })
   .then((response) => response.json())
-  .then((data) => console.log(data.data));
+  .then((data) => {
+    userData = data.data;
+    console.log(userData);
+    displayCards(data.data);
+  });
+
+let displayCards = function (users) {
+  users.forEach((user) => {
+    const userCard = createUserCard(user);
+    usersDiv.appendChild(userCard);
+  });
+};
+let createUserCard = function (user) {
+  let userDiv = document.createElement("div");
+  userDiv.className = "card";
+  userDiv.id = user.id;
+  let userImage = document.createElement("img");
+  userImage.className = "card-img";
+  userImage.setAttribute("src", user.picture);
+  userDiv.appendChild(userImage);
+  let userName = document.createElement("h4");
+  userName.className = "card-name";
+  userName.textContent = `${user.title} ${user.firstName} ${user.lastName}`;
+  userDiv.appendChild(userName);
+  let userButton = document.createElement("button");
+  userButton.className = "card-btn";
+  userButton.textContent = "See More Details";
+  userDiv.appendChild(userButton);
+  return userDiv;
+};
+
+/*<div class="card">
+  <img
+    src="https://randomuser.me/api/portraits/women/58.jpg"
+    alt=""
+    class="card-img"
+  />
+  <h4 class="card-name">ms Sara Anderson</h4>
+  <button class="card-btn">See More Details</button>
+</div>;
+*/

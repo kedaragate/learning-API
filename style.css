@@ -5,12 +5,13 @@
 }
 
 .cards {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   display: flex;
   flex-wrap: wrap;
   margin: 50px;
   padding: 20px;
   justify-content: center;
+  background-color: white;
 }
 
 .card {
@@ -19,10 +20,11 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   padding: 10px;
   width: 300px;
   height: 350px;
+  border: 1px solid gray;
 }
 .card img {
   width: 90%;
@@ -30,7 +32,9 @@
 }
 .card-btn {
   padding: 5px;
-  background-color: blue;
-  color: white;
+  background-color: rgba(25, 212, 72, 0.678);
+  color: black;
   cursor: pointer;
+  border-radius: 8px;
+  border: none;
 }
